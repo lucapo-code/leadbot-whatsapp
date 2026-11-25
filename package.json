@@ -1,0 +1,12 @@
+{
+  "name": "leadbot-whatsapp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Chatbot de WhatsApp para calificar leads con flujo conversacional configurable (sin IA generativa), traspaso a humano y clasificacion de prospectos.",
+  "main": "bot.mjs",
+  "scripts": { "start": "node bot.mjs" },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.0",
+    "pino": "^9.0.0"
+  }
+}

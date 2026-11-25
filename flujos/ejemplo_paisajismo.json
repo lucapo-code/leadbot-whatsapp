@@ -1,0 +1,50 @@
+{
+  "inicio": "bienvenida",
+  "variables_requeridas": ["servicio", "estado", "ciudad", "cantidad"],
+  "criterios_calificacion": {
+    "zona_valida": ["CDMX", "Estado de Mexico", "Puebla", "Queretaro", "Morelos", "Hidalgo", "Tlaxcala"],
+    "volumen_minimo": 100
+  },
+  "nodos": {
+    "bienvenida": {
+      "mensaje": "¡Hola! 🌳 Gracias por tu interés. Para orientarte mejor, ¿qué servicio buscás?\n\n1️⃣ Árboles de ornato/forestales\n2️⃣ Desarrollos urbanos / paisajismo\n3️⃣ Sistemas de riego\n4️⃣ Sustratos",
+      "capturar_en": "servicio",
+      "opciones": { "1": "arboles", "2": "paisajismo", "3": "riego", "4": "sustratos" },
+      "siguiente": "pedir_ubicacion"
+    },
+    "pedir_ubicacion": {
+      "mensaje": "Perfecto. ¿En qué estado y ciudad se ubica el proyecto?",
+      "capturar_en": "ubicacion_texto",
+      "siguiente": "pedir_cantidad"
+    },
+    "pedir_cantidad": {
+      "mensaje_por_servicio": {
+        "arboles": "¿Cuántos árboles necesitás, aproximadamente?",
+        "paisajismo": "¿Cuántos m² de áreas verdes tiene el proyecto?",
+        "riego": "¿Cuántas viviendas o m² cubriría el sistema de riego?",
+        "sustratos": "¿Qué volumen de sustrato necesitás (en m³ o bultos)?"
+      },
+      "capturar_en": "cantidad",
+      "siguiente": "pedir_fecha"
+    },
+    "pedir_fecha": {
+      "mensaje": "¿Para cuándo tenés pensado el proyecto? (podés responder algo como \"en 2 meses\" o una fecha)",
+      "capturar_en": "fecha_estimada",
+      "siguiente": "calificar"
+    },
+    "calificar": {
+      "tipo": "logica",
+      "siguiente_si_califica": "transferir_humano",
+      "siguiente_si_no_califica": "cierre_no_calificado"
+    },
+    "transferir_humano": {
+      "mensaje": "¡Gracias por la información! 🙌 Un asesor va a contactarte en breve para darte una cotización personalizada.",
+      "accion": "notificar_humano",
+      "fin": true
+    },
+    "cierre_no_calificado": {
+      "mensaje": "¡Gracias por escribirnos! Por el volumen/zona de tu proyecto, te vamos a compartir información general por este medio. Si en el futuro el proyecto crece, escribinos de nuevo.",
+      "fin": true
+    }
+  }
+}
